@@ -18,9 +18,3 @@ Live demo: https://shauryaoutfituniforms.netlify.app/
 - **Database:** MongoDB  
 - **Hosting:** Hostinger/Vercel/Render  
 - **Domain:** [shauryaoutfituniforms.com](http://www.shauryaoutfituniforms.com)  
-
-## ⚙️ Installation & Setup  
-1. Clone the repository:  
-   ```bash
-   git clone https://github.com/your-repo/shaurya-outfit-uniforms.git
-   cd shaurya-outfit-uniforms
