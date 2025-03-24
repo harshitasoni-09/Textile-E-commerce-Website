@@ -1,0 +1,1483 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background-color: #121212;
+    color: white;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Navigation Bar */
+.navbar {
+    display: flex;
+    width: 100%;
+    background-color: white;
+    justify-content: space-between;
+    padding: 10px 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100px;
+    align-items: center;
+    z-index: 1000;
+}
+
+.logo {
+    display: flex;
+}
+
+.logo img {
+    width: 150px; /* Default size */
+    height: auto;
+    max-height: 80px;
+}
+
+.nav-list {
+    display: flex;
+    list-style: none;
+}
+
+.nav-list li {
+    padding: 15px 20px;
+}
+
+.nav-list li a {
+    text-decoration: none;
+    color: black;
+    font-size: large;
+}
+
+.nav-list li a:hover {
+    color: crimson;
+}
+
+/* Search and Button Section */
+.nav-right {
+    display: flex;
+    gap: 10px; /* Adds spacing between search and button */
+    align-items: center;
+}
+
+#search {
+    width: 250px;
+    height: 40px;
+    padding: 10px 15px;
+    border: 2px solid black;
+    border-radius: 25px;
+    font-size: 16px;
+    background: white;
+    color: black;
+    outline: none;
+    transition: all 0.3s ease-in-out;
+}
+
+.find {
+    height: 40px;
+    padding: 10px 20px;
+    background: none;
+    color: black;
+    border: 1px solid black;
+    border-radius: 25px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+    margin-top: 5px;
+}
+
+.nav-right .find:hover {
+    background: wheat;
+}
+
+/* Responsive Navbar */
+@media screen and (max-width: 1024px) {
+    .navbar {
+        flex-wrap: wrap;
+        height: auto;
+        padding: 10px;
+        background-color: white;
+    }
+
+    .logo img {
+        width: 100px; /* Default size */
+        height: 40px;
+        max-height: 80px;
+    }
+
+    .nav-list {
+        flex-wrap: wrap;
+        justify-content: center;
+        padding: 10px 0;
+    }
+
+    .nav-right {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    #search {
+        width: 80%;
+        max-width: 300px;
+    }
+
+    .find {
+        width: 80%;
+        max-width: 150px;
+        margin-top: 5px;
+    }
+}
+
+/* Mobile View Adjustments */
+@media screen and (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        background-color: white;
+    }
+
+    .nav-list {
+        flex-direction: column;
+        padding: 10px 0;
+    }
+
+    .nav-list li {
+        padding: 10px;
+    }
+
+    .nav-right {
+        width: 100%;
+    }
+
+    #search {
+        width: 90%;
+    }
+
+    .find {
+        width: 90%;
+    }
+
+    .firstSection{
+        margin-top: 360px;
+    }
+}
+
+/* Main Section */
+.firstSection {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    width: 80%;
+    margin-top: 60px;
+}
+
+/* Box to hold text and image */
+.box-main {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+/* Left Text Section */
+.firstHalf {
+    flex: 1;
+    padding: 20px;
+    text-align: left;
+}
+
+.firstHalf p {
+    margin-bottom: 15px;
+}
+
+/* Buttons Below Paragraph */
+.buttons {
+    align-items: center;
+    justify-content: center;
+}
+
+.btn {
+    padding: 10px 20px;
+    margin: 5px;
+    background-color: crimson;
+    border: 2px solid white;
+    color: white;
+    cursor: pointer;
+    background: none;
+}
+
+.btn:hover {
+    background-color: crimson;
+}
+
+/* Right Image Section */
+.secondHalf {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.secondHalf img {
+    width: 100%;
+    max-width: none;
+    border-radius: 100px;
+    height: 50vh;
+    object-fit: cover;
+    opacity: 0.9;
+    box-shadow: 10px 10px 50px rgba(0, 0, 0, 0.5);
+    transition: all 0.5s ease-in-out;
+    position: relative;
+    right: -50px;
+    top: 0;
+    z-index: -1;
+    margin-right: 0px;
+}
+
+.text-big {
+    font-weight: 300;
+    font-size: x-large;
+}
+
+.text-small {
+    font-size: 15px;
+    margin-top: 30px;
+    color: gray;
+}
+
+/* ✅ Ensure the container fits one image at a time */
+.slider-container {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    max-width: 450px; /* Set max width to prevent stretching */
+    height: 400px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: black; /* Prevent black background issue */
+}
+
+/* ✅ Slider Track */
+.slider {
+    display: flex;
+    transition: transform 0.8s ease-in-out; /* Smooth transition */
+    width: 100%;
+}
+
+/* ✅ Ensure each image is fully visible */
+.slider img {
+    width: 100%;
+    max-width: 500px; /* Set proper max-width */
+    height: 400px;
+    object-fit: cover;
+    flex-shrink: 0;
+    border-radius: 10px;
+    margin-left: -15px; 
+}
+
+/* Right Side: Clickable Industry List */
+.paras {
+    flex: 1;
+    text-align: left;
+    padding: 0px 50px;
+}
+
+.sectiontitle {
+    font-weight: 300;
+    font-size: x-large;
+    text-transform: uppercase;
+    color: white;
+    margin-bottom: 25px;
+    position: relative;
+}
+
+
+.sectionTag {
+    font-size: x-large;
+    margin-bottom: 2px;
+    color: rgb(217, 209, 209);
+}
+
+.sectionSubTag {
+    font-size: 18px;
+    margin-top: 20px;
+}
+
+.sectionHeadline {
+    font-size: 20px;
+    margin-top: 20px;
+    color: gray;
+}
+
+.sectionSubTag a {
+    text-decoration: underline;
+    color: white;
+    transition: 0.3s ease-in-out;
+}
+
+.sectionSubTag a:hover {
+    color: crimson;
+}
+
+ul.sectionSubTag {
+    list-style: none;
+    padding-left: 0;
+}
+
+/* Existing styles remain unchanged */
+
+.wwa {
+    margin-bottom: 250px;
+    text-align: center;
+    padding: 20px 20px;
+    margin-top: -30px;
+    background: #121212; /* White Background */
+}
+
+.section-title {
+    font-weight: 300;
+    font-size: x-large;
+    text-transform: uppercase;
+    color: white;
+    margin-bottom: 25px;
+    position: relative;
+}
+
+.section-title::after {
+    content: '';
+    width: 50px;
+    height: 3px;
+    background: wheat; /* Yellow underline */
+    display: block;
+    margin: 10px auto;
+}
+
+.desc {
+    font-size: 16px;
+    color: gray;
+    margin-bottom: 0px;
+}
+
+.subHead {
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 35px;
+    margin-bottom: 10px;
+}
+
+.options {
+    list-style: none;
+    padding: 0;
+}
+
+.options li {
+    font-size: 16px;
+    margin: 5px 0;
+}
+
+.options a {
+    text-decoration: none;
+    color: gray;
+    font-weight: bold;
+}
+
+.options a:hover {
+    text-decoration: underline;
+    color: crimson;
+    font-weight: bold;
+}
+
+.choose {
+    font-weight: 300;
+    font-size: x-large;
+    margin-top: 65px;
+    color: white;
+}
+
+.choose-us {
+    font-size: 16px;
+    line-height: 1.8;
+    color: #444;
+}
+
+/* --- Added styles for "Why Choose Us" section --- */
+.choose-us-container {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    margin-top: 20px;
+    flex-wrap: nowrap; /* Ensures items remain in a single row */
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    padding: 10px;
+}
+
+.choose-item {
+    text-align: center;
+    width: 220px;
+    background: #1c1c1c; /* Dark background for each item */
+    padding: 20px;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+}
+
+.choose-item:hover {
+    transform: scale(1.05); /* Slight zoom on hover */
+}
+
+.choose-item img {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 10px;
+}
+
+.choose-item p {
+    font-size: 16px;
+    font-weight: bold;
+    color: gray;
+}
+
+.choose-us-container::-webkit-scrollbar {
+    display: none;
+}
+
+/* ✅ Industries Section */
+.industries {
+    width: 90%;
+    max-width: 1400px;
+    margin: 150px auto 50px; /* 🔹 Increased top margin to prevent navbar overlap */
+    padding-top: 50px;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+    padding: 50px 10px 50px 50px;
+    margin-top: -150px;
+}
+
+/* ✅ Industries Container - Five Cards Per Row */
+.industries-container {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr); /* Display five cards in a row */
+    gap: 20px;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+/* ✅ Flip Card */
+.flip-card {
+    width: 100%;
+    height: 250px;
+    perspective: 1000px;
+    position: relative;
+}
+
+.flip-card-front img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Ensures the full image is displayed without cropping */
+    max-height: 100%;
+    border-radius: 10px;
+}
+
+/* ✅ Flip Only When "Read More" is Clicked */
+.flip-card-inner {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.6s ease-in-out;
+}
+
+.flip-card .flip-card-inner.flipped {
+    transform: rotateY(180deg);
+}
+
+/* ✅ Front Side */
+.flip-card-front {
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    position: absolute;
+    backface-visibility: hidden;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+/* ✅ Curtain Effect */
+.curtain {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%; /* 🔹 Ensures curtain covers the entire card */
+    background: rgba(220, 20, 60, 0.9);
+    transition: transform 0.5s ease-in-out;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-weight: bold;
+}
+
+/* ✅ Fully Open Curtain on Hover */
+.flip-card:hover .curtain {
+    transform: translateY(-100%);
+}
+
+/* ✅ Hide Read More Initially */
+.read-more {
+    position: absolute;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: white;
+    color: crimson;
+    padding: 8px 12px;
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    border: none;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+/* ✅ Show Read More After Curtain Lifts */
+.flip-card:hover .read-more {
+    opacity: 1;
+}
+
+/* ✅ Back Side */
+.flip-card-back {
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    color: white;
+    transform: rotateY(180deg);
+    padding: 20px;
+    font-size: 16px;
+    border-radius: 10px;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    backface-visibility: hidden;
+}
+
+/* ✅ Responsive Adjustments */
+@media screen and (max-width: 1200px) {
+    .industries-container {
+        grid-template-columns: repeat(3, 1fr); /* Three cards per row on medium screens */
+    }
+
+    .industries{
+         margin-top: -110px;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .industries-container {
+        grid-template-columns: repeat(2, 1fr); /* Two cards per row on smaller screens */
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .industries-container {
+        grid-template-columns: repeat(1, 1fr); /* One card per row on mobile */
+    }
+
+    .additional-products{
+        margin-top: -115px
+    }
+}
+
+/* "We Also Offer" Section */
+.additional-products {
+    padding: 50px 20px;
+    background-color: #121212;
+    text-align: center;
+    color: white;
+}
+
+.additional-products .section-title {
+    font-weight: 300;
+    font-size: x-large;
+    margin-bottom: 20px;
+    color: white;
+    text-transform: uppercase;
+}
+
+/* Product Grid */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 20px;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+/* Product Cards */
+.product-card {
+    background-color: #1c1c1c;
+    border-radius: 10px;
+    padding: 15px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.product-card img {
+    width: 100%;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.product-card h3 {
+    font-size: 1.1em;
+    margin-top: 10px;
+    color: white;
+}
+
+/* Hover Effect */
+.product-card:hover {
+    transform: scale(1.05);
+    background-color: crimson;
+}
+
+/* Design Services */
+.design-services {
+    margin-top: 40px;
+    font-size: 16px;
+    color: gray;
+}
+
+/* 🔴 Contact Us Section Styling */
+.contact-section {
+    background: #121212; /* Dark background */
+    padding: 60px 10%;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 40px;
+}
+
+/* 🔴 Contact Container (Form Inside Box) */
+.contact-container {
+    width: 500px; /* Reduced width for a compact design */
+    background: black;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 20px rgba(255, 255, 255, 0.2);
+}
+
+/* 🔴 Contact Title */
+.contact-title {
+    font-size: 28px;
+    font-weight: bold;
+    color: crimson;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+/* 🔴 Contact Description */
+.contact-description {
+    font-size: 16px;
+    color: gray;
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+/* 🔴 Form Styling */
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+}
+
+.form-group {
+    text-align: left;
+}
+
+.form-group label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    display: block;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 2px solid crimson;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.form-group textarea {
+    height: 120px;
+}
+
+/* 🔴 Submit Button */
+.contact-btn {
+    background: crimson;
+    color: white;
+    padding: 12px 20px;
+    font-size: 18px;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+    border-radius: 5px;
+    width: 100%;
+}
+
+.contact-btn:hover {
+    background: lightcoral;
+}
+
+/* 🔴 Contact Info (Outside the Box, Right Side) */
+.contact-wrapper {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 40px;
+}
+
+/* Contact Info Box - Placed Outside */
+.contact-info {
+    max-width: 350px;
+    padding: 20px;
+    border-left: 2px solid crimson;
+    background: none; /* No background to keep it outside */
+    text-align: left;
+}
+
+/* 🔴 Contact Info Styling */
+.contact-info h2 {
+    font-size: 22px;
+    color: crimson;
+    margin-bottom: 10px;
+}
+
+.contact-info p {
+    margin: 5px 0;
+    font-size: 16px;
+}
+
+.contact-info img {
+    width: 150px; /* Adjusted logo size */
+    display: block;
+    margin-bottom: 15px;
+}
+
+.contact-link {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+.contact-link:hover {
+    color: crimson;
+}
+
+/* 🔴 Responsive Design */
+@media screen and (max-width: 900px) {
+    .contact-section {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .contact-container {
+        width: 90%;
+        padding: 20px;
+    }
+
+    .contact-wrapper {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .contact-info {
+        max-width: 100%;
+        padding-left: 0;
+        border-left: none;
+        margin-top: 20px;
+    }
+}
+
+
+/* 🔹 Footer Section */
+.footer {
+    width: 100%; /* Ensures full width */
+    background-color: white; /* White background */
+    color: black; /* Black text color */
+    text-align: center; /* Center align text */
+    padding: 20px 0; /* Space above and below */
+    font-size: 14px;
+    border-top: 2px solid #ccc; /* Light border on top */
+}
+
+/* 🔹 Footer Container */
+.footer-container {
+    width: 100%;
+    max-width: 1200px; /* Limits max width for better readability */
+    margin: auto;
+}
+
+/* 🔹 Footer Link Styling */
+.footer a {
+    color: crimson; /* Link color */
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.footer a:hover {
+    text-decoration: underline;
+}
+
+/* ✅ Popup Styling */
+.popup {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.8);
+    background-color: green;
+    color: white;
+    padding: 20px 30px;
+    border-radius: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.3);
+    opacity: 0;
+    transition: opacity 0.4s ease-in-out, transform 0.3s ease-in-out;
+    text-align: center;
+    z-index: 9999;
+}
+
+/* ✅ Swirling Effect */
+.checkmark {
+    display: block;
+    font-size: 50px;
+    animation: swirl 0.8s ease-in-out;
+    margin-bottom: 10px;
+}
+
+/* ✅ Swirl Animation */
+@keyframes swirl {
+    0% { transform: rotate(-360deg) scale(0); opacity: 0; }
+    100% { transform: rotate(0) scale(1); opacity: 1; }
+}
+
+/* Search Bar Styles */
+#search {
+    width: 250px;
+    height: 40px;
+    padding: 10px 15px;
+    border: 2px solid black;
+    border-radius: 25px;
+    font-size: 16px;
+    background: white;
+    color: black;
+    outline: none;
+    transition: all 0.3s ease-in-out;
+}
+
+#search:focus {
+    border-color: crimson;
+}
+
+.find {
+    height: 40px;
+    padding: 10px 20px;
+    background: none;
+    color: black;
+    border: 1px solid black;
+    border-radius: 25px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+    margin-top: 5px;
+}
+
+.find:hover {
+    background: wheat;
+}
+
+/* Ensure images and text do not overlap */
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Fix layout shifting issues */
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+/* Fix text alignment issues on smaller screens */
+@media (max-width: 768px) {
+    .key-offerings, .why-choose-us {
+        text-align: center;
+    }
+
+    .key-offerings h2, .why-choose-us h2 {
+        font-size: 1.2rem; /* Adjust text size for readability */
+    }
+
+    .button-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    /* Fix button resizing */
+    button {
+        width: 100%;
+        max-width: 250px;
+    }
+}
+
+/* Fix grid issues for sections */
+@media (max-width: 600px) {
+    .grid-container {
+        display: block; /* Stack elements instead of keeping them side by side */
+    }
+    
+    .grid-item {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+}
+
+
+/* 🔹 Responsive Navbar */
+@media screen and (max-width: 1024px) {
+    .navbar {
+        flex-wrap: wrap;
+        height: auto;
+        padding: 10px;
+    }
+
+    .nav-list {
+        flex-wrap: wrap;
+        justify-content: center;
+        padding: 10px 0;
+    }
+
+    .nav-right {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    #search {
+        width: 80%;
+        max-width: 300px;
+    }
+
+    .find {
+        width: 80%;
+        max-width: 150px;
+        margin-top: 5px;
+    }
+}
+
+/* 🔹 Mobile View Adjustments */
+@media screen and (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .nav-list {
+        flex-direction: column;
+        padding: 10px 0;
+    }
+
+    .nav-list li {
+        padding: 10px;
+    }
+
+    .nav-right {
+        width: 100%;
+    }
+
+    #search {
+        width: 90%;
+    }
+
+    .find {
+        width: 90%;
+    }
+}
+
+/* 🔹 Main Section */
+@media screen and (max-width: 768px) {
+    .firstSection {
+        flex-direction: column;
+        text-align: center;
+        width: 100%;
+        height: auto;
+        margin-top: 100px;
+    }
+
+    .box-main {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .firstHalf {
+        width: 90%;
+        padding: 15px;
+    }
+
+    .secondHalf {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .secondHalf img {
+        max-width: 80%;
+        height: auto;
+        border-radius: 20px;
+    }
+}
+
+/* 🔹 Slider Adjustments */
+@media screen and (max-width: 768px) {
+    .slider-container {
+        max-width: 100%;
+        height: auto;
+    }
+
+    .slider img {
+        max-width: 100%;
+        height: auto;
+    }
+}
+
+/* 🔹 Industry Grid Responsive Fix */
+@media screen and (max-width: 1200px) {
+    .industries-container {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .industries-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .industries-container {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+
+/* 🔹 Contact Section */
+@media screen and (max-width: 900px) {
+    .contact-section {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .contact-container {
+        width: 90%;
+        padding: 20px;
+    }
+
+    .contact-wrapper {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .contact-info {
+        max-width: 100%;
+        padding-left: 0;
+        border-left: none;
+        margin-top: 20px;
+    }
+}
+
+/* 🔹 Footer */
+@media screen and (max-width: 600px) {
+    .footer {
+        text-align: center;
+        font-size: 14px;
+        padding: 15px;
+    }
+}
+
+/* 🔹 Popup Adjustments */
+@media screen and (max-width: 768px) {
+    .popup {
+        width: 90%;
+        font-size: 16px;
+        padding: 15px;
+    }
+
+    .wwa {
+    margin-bottom: 150px; /* Reduced margin for better responsiveness */
+    text-align: center;
+    padding: 20px 5%; /* Use percentage for better responsiveness */
+    margin-top: -30px;
+    background: #121212;
+}
+
+/* Adjust title size for smaller screens */
+.section-title {
+    font-weight: 300;
+    font-size: x-large;
+    text-transform: uppercase;
+    color: white;
+    margin-bottom: 25px;
+    position: relative;
+}
+
+.section-title::after {
+    content: '';
+    width: 50px;
+    height: 3px;
+    background: wheat;
+    display: block;
+    margin: 10px auto;
+}
+
+.desc {
+    font-size: 16px;
+    color: gray;
+    margin-bottom: 0px;
+}
+
+/* Responsive SubHead */
+.subHead {
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 35px;
+    margin-bottom: 10px;
+}
+
+/* Options List */
+.options {
+    list-style: none;
+    padding: 0;
+}
+
+.options li {
+    font-size: 16px;
+    margin: 5px 0;
+}
+
+.options a {
+    text-decoration: none;
+    color: gray;
+    font-weight: bold;
+}
+
+.options a:hover {
+    text-decoration: underline;
+    color: crimson;
+    font-weight: bold;
+}
+
+/* Choose Us Section */
+.choose {
+    font-weight: 300;
+    font-size: x-large;
+    margin-top: 65px;
+    color: white;
+}
+
+.choose-us {
+    font-size: 16px;
+    line-height: 1.8;
+    color: #444;
+}
+
+/* Responsive "Why Choose Us" Section */
+.choose-us-container {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 20px;
+    flex-wrap: wrap; /* Allows items to stack on small screens */
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    padding: 10px;
+}
+
+.choose-item {
+    text-align: center;
+    width: 220px;
+    background: #1c1c1c;
+    padding: 20px;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+}
+
+.choose-item:hover {
+    transform: scale(1.05);
+}
+
+.choose-item img {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 10px;
+}
+
+.choose-item p {
+    font-size: 16px;
+    font-weight: bold;
+    color: gray;
+}
+
+.choose-us-container::-webkit-scrollbar {
+    display: none;
+}
+
+/* --- Responsive Fix for Smaller Screens --- */
+@media screen and (max-width: 1024px) {
+    .wwa {
+        margin-bottom: 100px; /* Adjust spacing for smaller screens */
+        padding: 20px 5%;
+    }
+
+    .section-title {
+        font-size: large;
+    }
+
+    .choose-us-container {
+        gap: 20px; /* Reduce gap to fit content properly */
+    }
+
+    .choose-item {
+        width: 180px; /* Reduce width so more items fit */
+        padding: 15px;
+    }
+
+    .choose-item img {
+        width: 50px;
+        height: 50px;
+    }
+
+    .choose-item p {
+        font-size: 14px;
+    }
+}
+
+/* Mobile View */
+@media screen and (max-width: 768px) {
+    .wwa {
+        margin-bottom: 50px;
+        padding: 15px 10%;
+    }
+
+    .choose-us-container {
+        flex-direction: column; /* Stack items in mobile */
+        align-items: center;
+        gap: 15px;
+    }
+
+    .choose-item {
+        width: 90%;
+    }
+
+    .section-title {
+        font-size: x-large;
+        margin-top: 100px;
+    }
+}
+
+}
+
+/* 🔹 Ensure Full Page Scrollability */
+html, body {
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+
+/* 🔹 Fix Navbar in Mobile View */
+@media screen and (max-width: 768px) {
+    .navbar {
+        position: relative;
+        width: 100%;
+        z-index: 999;
+    }
+
+    .nav-list {
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        background-color: white; /* Ensure background covers other content */
+        display: none;
+    }
+
+    .nav-list.active {
+        display: flex;
+    }
+
+    .nav-right {
+        flex-direction: column;
+        width: 100%;
+        text-align: center;
+    }
+}
+
+/* 🔹 Fix Other Sections */
+@media screen and (max-width: 768px) {
+    .firstSection {
+        flex-direction: column;
+        text-align: center;
+        width: 100%;
+        height: auto;
+        padding: 20px;
+        margin-top: 380px;
+    }
+
+    .secondHalf img {
+        max-width: 90%;
+        height: auto;
+        display: block;
+        margin: auto;
+    }
+
+    .industries-container {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    .contact-section {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .footer {
+        text-align: center;
+    }
+}
+
+/* Navigation Bar */
+.navbar {
+    display: flex;
+    flex-direction: row; /* Default: Horizontal */
+    align-items: center;
+    width: 100%;
+    background-color: white;
+    justify-content: space-between;
+    padding: 10px 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100px;
+    z-index: 1000;
+}
+
+/* Default Desktop View - Horizontal Navigation */
+.nav-list {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    list-style: none;
+    gap: 20px;
+}
+
+.nav-list li {
+    padding: 15px 20px;
+}
+
+
+
+.nav-list li a:hover {
+    color: crimson;
+}
+
+/* Search and Button */
+.nav-right {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+/* Responsive Navbar - Stacks Only When Screen is Small */
+@media screen and (max-width: 1024px) {
+    .navbar {
+        flex-direction: column; /* Switch to vertical on small screens */
+        height: auto;
+        padding: 10px;
+    }
+
+    .nav-list li a {
+        text-decoration: none;
+        color: black;
+        font-size: large;
+    }
+
+    .nav-list {
+        flex-direction: column; /* Stack items vertically */
+        width: 100%;
+        align-items: center;
+    }
+
+    .nav-list li {
+        width: 100%;
+        text-align: center;
+        padding: 10px;
+    }
+
+    /* Make search and button centered */
+    .nav-right {
+        flex-direction: column;
+        width: 100%;
+        align-items: center;
+        margin-top: 10px;
+    }
+}
+
+/* Mobile View Adjustments */
+@media screen and (max-width: 768px) {
+    .nav-list {
+        padding: 10px 0;
+    }
+
+    #search {
+        width: 90%;
+    }
+
+    .find {
+        width: 90%;
+    }
+}
