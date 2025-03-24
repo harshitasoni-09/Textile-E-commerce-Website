@@ -3,6 +3,8 @@
 ## 🏢 About  
 Shaurya Outfit Uniforms is a premium provider of professional and stylish uniforms for various industries, including corporate offices, hospitality, healthcare, and educational institutions. Our mission is to deliver high-quality, durable, and comfortable uniforms tailored to perfection.  
 
+Live demo: https://shauryaoutfituniforms.netlify.app/
+
 ## 🚀 Features  
 ✅ **Custom-designed uniforms** for different industries  
 ✅ **High-quality fabrics** ensuring durability & comfort  
