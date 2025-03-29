@@ -682,6 +682,24 @@ function showPopup(message, isError = false) {
     }, 3000);
 }
 
+let lastScrollTop = 0;
+const navbar = document.querySelector(".navbar");
+
+window.addEventListener("scroll", () => {
+    let scrollTop = window.scrollY || document.documentElement.scrollTop;
+    let maxScroll = document.documentElement.scrollHeight - window.innerHeight; // Total scrollable height
+
+    // Move up based on scroll position
+    let moveUp = Math.min((scrollTop / maxScroll) * 150, 100); // Moves up faster
+
+    navbar.style.transform = `translateY(-${moveUp}%)`;  
+    navbar.style.transition = "transform 0.2s ease-out"; // Fast, smooth transition
+
+    lastScrollTop = scrollTop;
+});
+;
+
+
 </script>
 
 <!-- ✅ SUCCESS POPUP -->
